@@ -130,7 +130,12 @@ the minority class, due to its smaller sample size.
   same process, consider hoisting the client creation to a single
   long-lived client to avoid repeated cluster start/stop overhead.
 
+ ## Authors / Contributors
+- Toktam Kamali Yazdi - (https://github.com/tkamali2020) 
+- Nastaran Evaznia — (nastaran.evaznia@gmail.com)
+
 ## License
 
 This project is licensed under the MIT License — see [LICENSE](LICENSE)
 for details.
+Copyright (c) 2025 Toktam Kamali Yazdi, Nastaran Evaznia.
