@@ -30,10 +30,36 @@ The pipeline consist of:
 9. **Compares** baseline vs. hyperparameter-tuned models and saves the
    final models, best hyperparameters, and comparison report.
 
-## Dataset
+## Dataset and Data Access
 
-Expected input: a CSV with the following columns (after the initial
-identifier/coordinate columns are dropped, the model uses 5 features):
+This project uses an astronomical classification dataset containing approximately 4.6 million records. The target variable is class, with three categories: STAR, GALAXY, and QSO.
+
+The dataset is not included in this repository because of its large file size. Access to the dataset is available upon request.
+
+To request access, please contact the repository owner through GitHub. The dataset will be shared through Google Drive after the request is reviewed and access is granted.
+
+Before Running the Pipeline
+
+Obtain access to the dataset from the repository owner.
+
+Download the CSV file or place it in your Google Drive.
+
+If using Google Colab, mount Google Drive and set csv_path to the location of the dataset.
+
+Ensure that the CSV contains the required columns listed below.
+
+Example:
+
+csv_path = "/content/drive/MyDrive/path/to/your_dataset.csv"
+main(csv_path)
+
+Replace the example path with the actual location of your CSV file.
+
+Note: The example above assumes a Google Colab environment with Google Drive mounted. Running the pipeline locally may require adjustments to file paths and dependencies.
+
+Features Used for Modeling
+
+The pipeline uses five input features and one target variable:
 
 | Feature      | Description                              |
 |--------------|-------------------------------------------|
@@ -44,11 +70,11 @@ identifier/coordinate columns are dropped, the model uses 5 features):
 | `resolved_r` | Resolved/point-source flag (r-band)      |
 | `class`      | Target: `STAR`, `GALAXY`, or `QSO`       |
 
-Columns dropped before modeling (low correlation / high redundancy):
-`g`, `i`, `mag_z`, plus identifiers `bestObjID`, `ra`, `dec`,
-`w1mpro`, `w2mpro`, `w3mpro`, `w4mpro`.
+The pipeline removes the following columns before modeling :
 
-
+Photometric features: g, i, mag_z
+Identifiers and other columns: bestObjID, ra, dec, w1mpro, w2mpro, w3mpro, w4mpro
+The final feature selection is based on the implementation in the project code.
 
 ## Installation
 
